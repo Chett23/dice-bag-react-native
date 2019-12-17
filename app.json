@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "This is a simple dice bag with the standard set of D&D dice set.",
+    "githubUrl": "https://github.com/Chett23/dice-bag-react-native"
   }
 }
