@@ -4,16 +4,16 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
-    backgroundColor: '#F4F2F3',
+    backgroundColor: 'black',
   },
   mainCont: {
     flex: 1,
-    backgroundColor: '#F4F2F3',
     alignItems: 'center',
     height: '100%',
     width: '100%',
   },
   title: {
+    color: '#F4F2F3',
     fontSize: 24,
   },
   resultCont: {
@@ -24,6 +24,7 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: 18,
+    color: '#F4F2F3',
   },  
   die: {
     width: 50,
