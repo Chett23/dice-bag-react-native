@@ -13,21 +13,28 @@ const imageRoutes = {
 }
 
 
-export default function Die({ sides }) {
+export default function Die({ sides, setMasterRoll }) {
   const [roll, setRoll] = useState(null)
+  const [history, setHistory] = useState([])
   return (
-    <>
-      <TouchableOpacity onPress={() => setRoll(Math.floor(Math.random() * Math.floor(sides) + 1))} >
+    <View style={styles.dieCont}>
+      <TouchableOpacity
+        onPress={() => {
+          let roll = Math.floor(Math.random() * Math.floor(sides) + 1)
+          setRoll(roll)
+          setMasterRoll(roll)
+          setHistory([...history, roll])
+        }}
+        style={styles.die}
+      >
         <SvgUri
-          width="50"
-          height="50"
+          width="100"
+          height="100"
           source={imageRoutes[sides]}
         />
       </TouchableOpacity>
-      <View>
-        {roll && <Text style={styles.text}>{roll}</Text>}
-      </View>
+      {history.length > 0 && <Button title='see history' onPress={() => setMasterRoll(history)} />}
       <Button title="reset" onPress={() => setRoll(null)} />
-    </>
+    </View>
   )
 }

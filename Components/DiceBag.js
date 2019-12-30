@@ -13,7 +13,7 @@ export default function DiceBag({ startDice }) {
 
   const renderDice = () => {
     let tempDisplayDice = dice.map((die, i) => (
-      <Die key={i} sides={die} />
+      <Die key={i} sides={die} setMasterRoll={setRoll} />
     ))
     setDisplayDice(tempDisplayDice)
   }
@@ -24,8 +24,17 @@ export default function DiceBag({ startDice }) {
 
   return (
     <View style={styles.container} >
-      <View style={styles.mainCont}>
-        <Text style={styles.title}>Dice Bag</Text>
+      <Text style={styles.title}>Dice Bag</Text>
+      <View style={styles.resultCont}>
+        <Text style={styles.resultText}>
+          {
+            typeof roll === 'array' &&
+              console.log(roll)
+          }
+          {roll}
+        </Text>
+      </View>
+      <View style={styles.diceBag}>
         {displayDice}
       </View>
     </View>
