@@ -18,7 +18,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   resultText: {
-    color: '#000000',
     fontSize: 124,
     fontWeight: "bold"
   },
@@ -36,10 +35,7 @@ export default StyleSheet.create({
   },
   dieCont: {
     width: 150,
-    height: 180,
-    alignItems: 'center'
-  },
-  die: {
-
+    alignItems: 'center',
+    paddingVertical: 10,
   },
 });

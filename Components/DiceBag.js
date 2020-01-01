@@ -13,9 +13,16 @@ export default function DiceBag({ startDice }) {
 
   const renderDice = () => {
     let tempDisplayDice = dice.map((die, i) => (
-      <Die key={i} sides={die} setMasterRoll={setRoll} />
+      <Die key={i} sides={die} setRoll={setRoll} />
     ))
     setDisplayDice(tempDisplayDice)
+  }
+
+  const getResultTextStyle = () => {
+    return {
+      ...styles.resultText,
+      color: roll.color
+    }
   }
 
   useEffect(() => {
@@ -27,7 +34,7 @@ export default function DiceBag({ startDice }) {
     <View style={styles.container} >
       <Text style={styles.title}>Dice Bag</Text>
       <View style={styles.resultCont}>
-        <Text style={styles.resultText}>
+        <Text style={getResultTextStyle()}>
           {
             typeof roll === 'array' &&
             console.log(roll)

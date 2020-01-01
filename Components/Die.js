@@ -6,41 +6,49 @@ import styles from '../styles'
 const svgInfo = {
   4: {
     img: require('../assets/4-sided.svg'),
-    color: '#D5A021',
+    color: '#A874A4',
   },
   6: {
     img: require('../assets/6-sided.svg'),
-    color: '#335C67',
+    color: '#9CDCFE',
   },
   8: {
     img: require('../assets/8-sided.svg'),
-    color: '#A0191F',
+    color: '#D7D7A6',
   },
   10: {
     img: require('../assets/10-sided.svg'),
-    color: '#96A495',
+    color: '#CE9178',
   },
   12: {
     img: require('../assets/12-sided.svg'),
-    color: '#785589',
+    color: '#4f8dc0',
   },
   20: {
     img: require('../assets/20-sided.svg'),
-    color: '#708209',
+    color: '#689553',
   },
 }
 
 
-export default function Die({ sides, setMasterRoll }) {
-  const [roll, setRoll] = useState(null)
+export default function Die({ sides, setRoll }) {
   const [history, setHistory] = useState([])
+
+
+  const getDieNameStyle = () => {
+    return {
+      color: svgInfo[sides].color,
+      fontSize: 18,
+    }
+  }
+
   return (
     <View style={styles.dieCont}>
+      <Text style={getDieNameStyle()}>{`${sides} sided`}</Text>
       <TouchableOpacity
         onPress={() => {
           let roll = Math.floor(Math.random() * Math.floor(sides) + 1)
-          setRoll(roll)
-          setMasterRoll(roll)
+          setRoll({ value: roll, color: svgInfo[sides].color })
           setHistory([...history, roll])
         }}
         style={styles.die}
@@ -51,7 +59,7 @@ export default function Die({ sides, setMasterRoll }) {
           source={svgInfo[sides].img}
         />
       </TouchableOpacity>
-      {history.length > 0 && <Button title='see history' onPress={() => setMasterRoll(history)} />}
+      {/* {history.length > 0 && <Button title='show history' onPress={() => setRoll({ value: history, color: svgInfo[sides].color })} />} */}
     </View>
   )
 }
