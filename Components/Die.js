@@ -3,13 +3,31 @@ import { Text, TouchableOpacity, Button, View } from 'react-native'
 import SvgUri from 'react-native-svg-uri'
 import styles from '../styles'
 
-const imageRoutes = {
-  4: require('../assets/4-sided.svg'),
-  6: require('../assets/6-sided.svg'),
-  8: require('../assets/8-sided.svg'),
-  10: require('../assets/10-sided.svg'),
-  12: require('../assets/12-sided.svg'),
-  20: require('../assets/20-sided.svg'),
+const svgInfo = {
+  4: {
+    img: require('../assets/4-sided.svg'),
+    color: '#D5A021',
+  },
+  6: {
+    img: require('../assets/6-sided.svg'),
+    color: '#335C67',
+  },
+  8: {
+    img: require('../assets/8-sided.svg'),
+    color: '#A0191F',
+  },
+  10: {
+    img: require('../assets/10-sided.svg'),
+    color: '#96A495',
+  },
+  12: {
+    img: require('../assets/12-sided.svg'),
+    color: '#785589',
+  },
+  20: {
+    img: require('../assets/20-sided.svg'),
+    color: '#708209',
+  },
 }
 
 
@@ -30,11 +48,10 @@ export default function Die({ sides, setMasterRoll }) {
         <SvgUri
           width="100"
           height="100"
-          source={imageRoutes[sides]}
+          source={svgInfo[sides].img}
         />
       </TouchableOpacity>
       {history.length > 0 && <Button title='see history' onPress={() => setMasterRoll(history)} />}
-      <Button title="reset" onPress={() => setRoll(null)} />
     </View>
   )
 }

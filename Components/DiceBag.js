@@ -7,7 +7,7 @@ import Die from './Die'
 export default function DiceBag({ startDice }) {
   const [displayDice, setDisplayDice] = useState([])
   const [stnd, setStnd] = useState([4, 6, 8, 10, 12, 20])
-  const [roll, setRoll] = useState(null)
+  const [roll, setRoll] = useState({ value: null, color: '#000000' })
   const [dice, setDice] = useState(startDice.map(die => die === 'stnd' ? stnd : die).flat())
   // const [selectValue, setSelectValue] = useState(4)
 
@@ -20,6 +20,7 @@ export default function DiceBag({ startDice }) {
 
   useEffect(() => {
     renderDice()
+    styles.resultText.color = roll.color
   }, [])
 
   return (
@@ -29,9 +30,9 @@ export default function DiceBag({ startDice }) {
         <Text style={styles.resultText}>
           {
             typeof roll === 'array' &&
-              console.log(roll)
+            console.log(roll)
           }
-          {roll}
+          {roll.value}
         </Text>
       </View>
       <View style={styles.diceBag}>
